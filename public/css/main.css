@@ -9,5 +9,20 @@ body {
 }
 .physician .specialties ul,
 .physician .specialties li {
+  list-style: disc;
+  margin-top: 0;
+}
+.physician .name {
+  font-weight: bold;
+}
+.physician .volunteer {
+  color: #999;
+}
+
+.search input {
+  display: block;
+  margin: 0.25em 0;
+}
+.search input.checkbox {
   display: inline;
 }

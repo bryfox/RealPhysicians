@@ -2,7 +2,7 @@ class Physician
 
   include DataMapper::Resource
 
-  SPECIALTIES = STRINGS['specialties']
+  SPECIALTIES = STRINGS['specialties'].symbolize
 
   has n, :degrees, :through => Resource
   has n, :locations, :through => Resource

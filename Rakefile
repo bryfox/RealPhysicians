@@ -29,7 +29,7 @@ namespace :db do
       :last_name  => /\w+/.gen.title_case,
       :hourly_fee => (rand * 50).round + 50,
       :can_volunteer => rand.round,
-      :specialties => Physician::SPECIALTIES.random,
+      :specialties => Array.new(rand(10)) {Physician::SPECIALTIES.random}.uniq,
       :locations  => 2.of {Location.make},
       :degrees  => 1.of {Degree.make}
     }}

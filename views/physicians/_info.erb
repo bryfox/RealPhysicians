@@ -1,15 +1,24 @@
 <li class="physician">
   <span class="name"><%= physician.first_name %> <%= physician.last_name %></span>
 
-  <span class="address"><%= physician.primary_location.address %></span>
-  <span class="address"><%= physician.primary_location.city %>, <%= physician.primary_location.country %></span>
+  <% if physician.primary_location %>
+    <span class="address"><%= physician.primary_location.address %></span>
+    <span class="address"><%= physician.primary_location.city %>, <%= physician.primary_location.country %></span>
+  <% end %>
 
-  <span class="specialties">
-    Specialties:
-    <ul>
-      <% physician.specialties.each do | specialty | %>
-        <li><%= specialty %></li>
-      <% end %>
-    </ul>
-  </span>
+  <% if physician.specialties.length %>
+    <span class="specialties">
+      <b>Specialties:</b>
+      <ul>
+        <% physician.specialties.each do | specialty | %>
+          <li><%= specialty %></li>
+        <% end %>
+      </ul>
+    </span>
+  <% end %>
+
+  <% if physician.can_volunteer? %>
+    <span class="volunteer">This physician is willing to volunteer.</span>
+  <% end %>
+
 </li>

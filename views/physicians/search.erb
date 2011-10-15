@@ -1,3 +1,21 @@
+<h2>Find a physician</h2>
+<form action="/physicians/search" method="GET" class="search">
+
+  <fieldset>
+    <input type="text" name="location" placeholder="My Location">
+  </fieldset>
+
+  <fieldset>
+    <input type="text" name="physician[first_name]" placeholder="First Name">
+    <input type="text" name="physician[last_name]" placeholder="Last Name">
+
+    <label class="checkbox" for="">Can Volunteer</label>
+    <input class="checkbox" type="checkbox" name="physician[can_volunteer]">
+  </fieldset>
+
+  <input type="submit" value="Search">
+</form>
+
 <% if @physicians %>
   <h2>Found <%= @physicians.count %> results</h2>
   
@@ -6,13 +24,3 @@
   <% end %>
   
 <% end %>
-
-<form action="/physicians/search" method="GET">
-  <input type="text" name="physician[first_name]" placeholder="First Name">
-  <input type="text" name="physician[last_name]" placeholder="Last Name">
-
-  <label class="checkbox" for="">Can Volunteer</label>
-  <input type="checkbox" name="physician[can_volunteer]">
-
-  <input type="submit" value="Search">
-</form>
