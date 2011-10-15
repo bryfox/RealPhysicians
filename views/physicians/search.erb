@@ -1,0 +1,18 @@
+<% if @physicians %>
+  <h2>Found <%= @physicians.count %> results</h2>
+  
+  <% @physicians.each do | physician | %>
+    <%= partial :'physicians/_info', :physician => physician %>
+  <% end %>
+  
+<% end %>
+
+<form action="/physicians/search" method="GET">
+  <input type="text" name="physician[first_name]" placeholder="First Name">
+  <input type="text" name="physician[last_name]" placeholder="Last Name">
+
+  <label class="checkbox" for="">Can Volunteer</label>
+  <input type="checkbox" name="physician[can_volunteer]">
+
+  <input type="submit" value="Search">
+</form>

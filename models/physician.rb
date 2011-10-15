@@ -2,7 +2,7 @@ class Physician
 
   include DataMapper::Resource
 
-  SPECIALTIES = [:internal_medicine, :emergency, :obgyn]
+  SPECIALTIES = STRINGS['specialties']
 
   has n, :degrees, :through => Resource
   has n, :locations, :through => Resource

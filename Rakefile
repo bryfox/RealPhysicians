@@ -19,14 +19,14 @@ namespace :db do
   desc "Load Pseudo-random Dummy Data"
   task :fixtures => :bootstrap do
     Location.fix {{
-      :address => /\d{2,4} \w+ St|Ave|Rd/.gen,
-      :city    => /\w+/.gen,
-      :country => /\w+/.gen
+      :address => /\d{2,4} \w+ (St|Ave|Rd)/.gen.title_case,
+      :city    => /Abuja|Kano|Enugu|Lagos/.gen.title_case,
+      :country => 'Nigeria'
     }}
 
     Physician.fix {{
-      :first_name => /\w+/.gen.gsub(/\b\w/){$&.upcase},
-      :last_name  => /\w+/.gen.gsub(/\b\w/){$&.upcase},
+      :first_name => /\w+/.gen.title_case,
+      :last_name  => /\w+/.gen.title_case,
       :hourly_fee => (rand * 50).round + 50,
       :can_volunteer => rand.round,
       :specialties => Physician::SPECIALTIES.random,

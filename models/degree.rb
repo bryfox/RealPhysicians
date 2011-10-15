@@ -4,8 +4,8 @@ class Degree
 
   has n, :physicians, :through => Resource
 
-  NAMES = [:MD, :PhD, :ND]
-  SCHOOLS = [:'University of Nigeria']
+  NAMES = STRINGS['degrees']
+  SCHOOLS = STRINGS['schools']
 
   property :id,     Serial
   property :degree_date, DateTime

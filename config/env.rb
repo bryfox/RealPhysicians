@@ -11,9 +11,13 @@ DataMapper::Model.raise_on_save_failure = true
 
 puts "Starting in #{Sinatra::Base.environment} mode."
 
+STRINGS = YAML::load( File.open( File.join(ROOT_DIR, '/config/strings.yaml') ) )
+puts STRINGS.inspect
+
 class Controller < Sinatra::Base
 
   # set :public_folder, File.dirname(__FILE__) + '/../public'
+  set :public, File.join(ROOT_DIR, '/public')
 
   configure :development do
     enable :logging

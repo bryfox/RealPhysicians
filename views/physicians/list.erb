@@ -1,23 +1,5 @@
 <ul>
-
   <% @physicians.each do | physician | %>
-
-    <li class="physician">
-      <span class="name"><%= physician.first_name %> <%= physician.last_name %></span>
-
-      <span class="address"><%= physician.primary_location.address %></span>
-      <span class="address"><%= physician.primary_location.city %>, <%= physician.primary_location.country %></span>
-
-      <span class="specialties">
-        Specialties:
-        <ul>
-          <% physician.specialties.each do | specialty | %>
-            <li><%= specialty %></li>
-          <% end %>
-        </ul>
-      </span>
-    </li>
-
+    <%= partial :'physicians/_info', :physician => physician %>
   <% end %>
-
 </ul>

@@ -5,15 +5,8 @@ class Sinatra::Base
       Rack::Utils.escape_html(text)
     end
   
-    def partial(template, options={})
-      options.merge!(:layout => false)
-      if collection = options.delete(:collection) then
-        collection.inject([]) do |buffer, member|
-          buffer << haml(template, options.merge(:layout => false, :locals => {template.to_sym => member}))
-        end.join("\n")
-      else
-        haml(template, options)
-      end
+    def partial (template, locals = {})
+      erb(template, :layout => false, :locals => locals)
     end
 
   end

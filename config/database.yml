@@ -1,6 +1,0 @@
-production:
-  adapter: postgres
-  host: localhost
-  username: realphysicians
-  password: doctordoctor
-  database: realphysicians
