@@ -11,9 +11,12 @@ class Controller < Sinatra::Base
 
   get '/physicians/search' do
     query = clean(params['physician'])
-puts query.inspect
-    @physicians = query ? Physician.all(query) : nil
-    erb :'physicians/search'
+    if query
+      @physicians = Physician.all(query)
+      erb :'physicians/results'
+    else 
+      erb :'physicians/search'
+    end
   end
 
   private

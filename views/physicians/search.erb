@@ -1,4 +1,5 @@
 <h2>Find a physician</h2>
+
 <form action="/physicians/search" method="GET" class="search">
 
   <fieldset>
@@ -9,18 +10,10 @@
     <input type="text" name="physician[first_name]" placeholder="First Name">
     <input type="text" name="physician[last_name]" placeholder="Last Name">
 
-    <label class="checkbox" for="">Can Volunteer</label>
-    <input class="checkbox" type="checkbox" name="physician[can_volunteer]">
+    <label class="checkbox" for="physician_can_volunteer">Can Volunteer</label>
+    <input class="checkbox" type="checkbox" name="physician[can_volunteer]" id="physician_can_volunteer">
   </fieldset>
 
   <input type="submit" value="Search">
 </form>
 
-<% if @physicians %>
-  <h2>Found <%= @physicians.count %> results</h2>
-  
-  <% @physicians.each do | physician | %>
-    <%= partial :'physicians/_info', :physician => physician %>
-  <% end %>
-  
-<% end %>
