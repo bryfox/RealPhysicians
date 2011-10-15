@@ -4,4 +4,9 @@ class Controller < Sinatra::Base
     erb :index
   end
 
+  get '/physicians' do
+    @physicians = Physician.all
+    erb :'physicians/list'
+  end
+
 end

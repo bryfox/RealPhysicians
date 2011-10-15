@@ -13,7 +13,7 @@ puts "Starting in #{Sinatra::Base.environment} mode."
 
 class Controller < Sinatra::Base
 
-  enable :method_override
+  # set :public_folder, File.dirname(__FILE__) + '/../public'
 
   configure :development do
     enable :logging
@@ -25,7 +25,7 @@ class Controller < Sinatra::Base
   end
 
   configure :production do
-    # DataMapper.setup :default, 'postgres://user:pass@localhost/database'
+    DataMapper.setup :default, 'postgres://gzuddlvnqd:bWimuwheGFTYmeHUL92Z@ec2-107-20-155-141.compute-1.amazonaws.com/gzuddlvnqd'
   end
 end
 
