@@ -4,8 +4,8 @@ class Array
     self[rand(self.size)]
   end
 
-  def symbolize
-    self.map {|string| string.to_sym }
+  def symbolize!
+    self.map! {|string| string.to_sym }
   end
 
 end

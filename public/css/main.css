@@ -42,3 +42,11 @@ li {
 .search input.checkbox {
   display: inline;
 }
+
+.label, label {
+  font-weight: normal;
+  font-size: 1em;
+}
+.specialty.label {
+  font-size: 0.8em;
+}

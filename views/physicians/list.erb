@@ -1,4 +1,4 @@
-<h2>Found <%= @physicians.count %> results</h2>
+<h2>Found <%= @physicians.count %> results for your criteria</h2>
 <ul>
   <% @physicians.each do | physician | %>
     <%= partial :'physicians/_info', :physician => physician %>

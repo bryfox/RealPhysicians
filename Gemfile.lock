@@ -62,6 +62,7 @@ GEM
       data_objects (= 0.10.7)
     eventmachine (0.12.10)
     fastercsv (1.5.4)
+    geokit (1.6.0)
     json (1.4.6)
     json_pure (1.5.4)
       spruz (~> 0.2.8)
@@ -110,6 +111,7 @@ DEPENDENCIES
   dm-postgres-adapter (= 1.1.0)
   dm-sweatshop (= 1.1.0)
   dm-types (= 1.1.0)
+  geokit
   json_pure
   rack (= 1.2.1)
   rake (~> 0.8.7)

@@ -2,7 +2,7 @@ class Physician
 
   include DataMapper::Resource
 
-  SPECIALTIES = STRINGS['specialties'].symbolize
+  SPECIALTIES = STRINGS['specialties'].symbolize!
 
   has n, :degrees, :through => Resource
   has n, :locations, :through => Resource
@@ -22,7 +22,7 @@ class Physician
     # Hourly fee: filter by maximum
     max_fee = opts.delete(:hourly_fee)
     opts.merge!({:hourly_fee.lte => max_fee}) if max_fee
-
+    puts "Query: #{opts.inspect}"
     all(opts)
   end
 

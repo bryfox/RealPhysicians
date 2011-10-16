@@ -12,6 +12,7 @@ gem 'rack',                   '1.2.1'
 gem 'rest-client',         '~> 1.6.3', :require => 'rest_client'
 gem 'sinatra',              '~>1.2.6',  :require => 'sinatra/base'
 gem "json_pure",                       :require => 'json/pure'
+gem "geokit"
 
 group :development do
   gem 'shotgun'

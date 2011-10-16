@@ -16,7 +16,7 @@ namespace :db do
     DataMapper.auto_upgrade!
   end
 
-  desc "Load Pseudo-random Dummy Data"
+  desc "Load pseudo-random Dummy Data"
   task :fixtures => :bootstrap do
     Location.fix {{
       :address => /\d{2,4} \w+ (St|Ave|Rd)/.gen.title_case,
@@ -30,7 +30,7 @@ namespace :db do
       :hourly_fee => (rand * 50).round + 50,
       :can_volunteer => rand.round,
       :specialties => Array.new(rand(10)) {Physician::SPECIALTIES.random}.uniq,
-      :locations  => 2.of {Location.make},
+      :locations  => 2.of {Location.pick},
       :degrees  => 1.of {Degree.make}
     }}
 
@@ -40,7 +40,8 @@ namespace :db do
       :school => Degree::SCHOOLS.random
     }}
 
-    50.times {Physician.gen}
+    10.times { Location.gen }
+    50.times { Physician.gen }
 
   end
 
