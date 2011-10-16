@@ -12,6 +12,7 @@ module DataMapper
         # Looks in the query for keys that are a DistanceOperator, then extracts the keys/values and turns them into conditions
         def prepare_query(query)
           new_conds = query[:conditions]
+          new_fields = query[:fields]
           query.each_pair do |k,v|
             next if not k.is_a?(DistanceOperator)
             field = k.target
@@ -19,10 +20,11 @@ module DataMapper
             distance = v[:distance]
             new_conds = expand_conditions(new_conds, "#{sphere_distance_sql(field, origin, distance.measurement)}", distance.to_f)
             new_conds = apply_bounds_conditions(new_conds, field, bounds_from_distance(distance.to_f, origin, distance.measurement))
-            query[:fields] = expand_fields(query[:fields], field, "#{sphere_distance_sql(field, origin, distance.measurement)}")
+            new_fields = expand_fields(new_fields, field, "#{sphere_distance_sql(field, origin, distance.measurement)}")
             query.delete(k)
           end
           query[:conditions] = new_conds
+          query[:fields] = new_fields
           query
         end
 
