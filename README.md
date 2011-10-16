@@ -10,6 +10,19 @@ This prototype is intended to demonstrate viability on a variety of devices. The
 
 -- [Source](http://naijatechguide.blogspot.com/2010/01/nokia-phones-for-2010-in-emerging.html)
 
+## Premise
+
+Real Physicians provides: 
+
+* A consolidated database of board certified and licensed medical professionals
+*  Aggregation of disparate data from different countries, region and continents
+*  Standardized categories of licensed medical professionals with their credentials, prac;ces, availability and exper;se
+*  A minimum level of trust utilizing global best practices
+*  Layers of services to easily locate medical professionals
+and information about them
+*  Tools to quickly locate needed information for many use cases and scenarios
+*  Access to qualified professionals regardless of income
+
 ## Requirements
 
 This is a [Sinatra app](http://sinatrarb.com).
