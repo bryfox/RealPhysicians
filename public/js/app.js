@@ -14,7 +14,6 @@
     },
     onFailure: function (e) {
       alert('Error geolocating.');
-      console.log(e.message)
     }
   };
 

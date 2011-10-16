@@ -1,9 +1,6 @@
 body {
   background-color: #efeac9;
 }
-form.search {
-/*  margin: 1em;*/
-}
 form.search,
 .results {
   background-color: #F9FDE3;
@@ -88,4 +85,45 @@ li {
 
 p + p, p + ul {
   margin-top: 0;
+}
+
+
+
+/* 
+  Styling to optimize LCD of feature phones 
+  TODO: fixes for large screens that don't support media queries (IE)
+*/
+
+.container {
+  padding-left: 0;
+  padding-right: 0;
+}
+div.results {
+  padding: 0;
+}
+.home h1 img {
+  width: 75px;
+  height: 84px;
+}
+
+@media screen and (min-width: 1px) {
+  .home h1 img {
+    width: 150px;
+    height: 167px;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+}
+
+@media screen and (max-width: 767px) {
+  div.results {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }

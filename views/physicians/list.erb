@@ -1,9 +1,9 @@
 <div class="row col_12">
   <h4>Physicians</h4>
   <p>Found <%= @physicians.count %> results for your criteria</p>
-  <ul class="results">
+  <div class="results">
     <% @physicians.each do | physician | %>
       <%= partial :'physicians/_info', :physician => physician %>
     <% end %>
-  </ul>
+  </div>
 </div>

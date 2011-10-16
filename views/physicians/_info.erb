@@ -1,40 +1,42 @@
-<li class="physician">
-  <span class="name">
+<div class="physician">
+  <div class="name">
     <%= physician.first_name %> <%= physician.last_name %>
     <% if physician.can_volunteer? %>
-      <span class="volunteer">volunteer</span>
+      <div class="volunteer">volunteer</div>
     <% end %>
-  </span>
+  </div>
+
+  <div class="phone">+234 55-555-555</div>
 
   <% if physician.hourly_fee %>
-    <span class="fee"><b>Hourly fee:</b> $<%= physician.hourly_fee %></span>
+    <div class="fee"><b>Hourly fee:</b> $<%= physician.hourly_fee %></div>
   <% end %>
 
   <% if physician.primary_location %>
-    <span class="address"><%= physician.primary_location.address %></span>
-    <span class="address"><%= physician.primary_location.address_city %>, Nigeria</span>
+    <div class="address"><%= physician.primary_location.address %></div>
+    <div class="address"><%= physician.primary_location.address_city %>, Nigeria</div>
   <% end %>
 
   <% if physician.specialties.length %>
-    <span class="specialties">
+    <div class="specialties">
       <b>Specialties:</b>
       <ul>
         <% physician.specialties.each do | specialty | %>
           <li><%= specialty %></li>
         <% end %>
       </ul>
-    </span>
+    </div>
   <% end %>
 
   <% if physician.degrees.length %>
-    <span class="degrees">
+    <div class="degrees">
       <b>Degrees:</b>
       <ul>
         <% physician.degrees.each do | degree | %>
           <li><%= degree %></li>
         <% end %>
       </ul>
-    </span>
+    </div>
   <% end %>
 
-</li>
+</div>
