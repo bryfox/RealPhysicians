@@ -19,9 +19,9 @@ namespace :db do
   desc "Load pseudo-random Dummy Data"
   task :fixtures => :bootstrap do
     Location.fix {{
-      :address => /\d{2,4} \w+ (St|Ave|Rd)/.gen.title_case,
-      :city    => /Abuja|Kano|Enugu|Lagos/.gen.title_case,
-      :country => 'Nigeria'
+      :address_street_address => /\d{2,4} \w+ (St|Ave|Rd)/.gen.title_case,
+      :address_city    => /Abuja|Kano|Enugu|Lagos/.gen.title_case,
+      :address_country_code => 'ng'
     }}
 
     Physician.fix {{
