@@ -1,15 +1,25 @@
+body {
+  
+}
 li {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 .physician {
+  border-bottom: 1px solid #999;
   margin: 1em 0;
+  padding-bottom: 0.5em;
 }
 .physician span {
   display: block;
 }
-.physician .specialties li {
+.physician .specialties ul,
+.physician .degrees ul {
+  margin: 0;
+}
+.physician .specialties li,
+.physician .degrees li {
   font-size: 0.8em;
   line-height: 1.5;
   list-style: disc;
@@ -21,6 +31,8 @@ li {
 }
 .physician .volunteer {
   color: #999;
+  font-weight: normal;
+  display: inline;
 }
 
 .search input {

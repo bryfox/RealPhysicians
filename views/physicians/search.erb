@@ -1,6 +1,6 @@
 <h2>Find a physician</h2>
 
-<form action="/physicians/search" method="GET" class="search">
+<form action="/physicians" method="GET" class="search">
 
   <fieldset>
     <h3>Your Location</h3>
@@ -16,6 +16,14 @@
 
     <label for="physician_last_name">Last Name</label>
     <input type="text" name="physician[last_name]" placeholder="Last Name" id="physician_last_name">
+
+    <label for="physician_hourly_fee">Max. Hourly Fee (USD)</label>
+    <input type="number" name="physician[hourly_fee]" placeholder="50" id="physician_hourly_fee">
+
+    <label for="physician_specialties">Max. Hourly Fee (USD)</label>
+    <select name="physician[specialties]" id="physician_specialties">
+      
+    </select>
 
     <input class="checkbox" type="checkbox" name="physician[can_volunteer]" id="physician_can_volunteer">
     <label class="checkbox" for="physician_can_volunteer">Can Volunteer</label>

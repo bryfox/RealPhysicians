@@ -1,5 +1,14 @@
 <li class="physician">
-  <span class="name"><%= physician.first_name %> <%= physician.last_name %></span>
+  <span class="name">
+    <%= physician.first_name %> <%= physician.last_name %>
+    <% if physician.can_volunteer? %>
+      <span class="volunteer">volunteer</span>
+    <% end %>
+  </span>
+
+  <% if physician.hourly_fee %>
+    <span class="fee"><b>Hourly fee:</b> $<%= physician.hourly_fee %></span>
+  <% end %>
 
   <% if physician.primary_location %>
     <span class="address"><%= physician.primary_location.address %></span>
@@ -17,8 +26,15 @@
     </span>
   <% end %>
 
-  <% if physician.can_volunteer? %>
-    <span class="volunteer">This physician is willing to volunteer.</span>
+  <% if physician.degrees.length %>
+    <span class="degrees">
+      <b>Degrees:</b>
+      <ul>
+        <% physician.degrees.each do | degree | %>
+          <li><%= degree %></li>
+        <% end %>
+      </ul>
+    </span>
   <% end %>
 
 </li>

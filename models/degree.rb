@@ -8,8 +8,12 @@ class Degree
   SCHOOLS = STRINGS['schools']
 
   property :id,     Serial
-  property :degree_date, DateTime
-  property :degree_name, Flag[*NAMES]
-  property :degree_school, Flag[*SCHOOLS]
+  property :date, DateTime
+  property :name, Enum[*NAMES]
+  property :school, Enum[*SCHOOLS]
+
+  def to_s
+    self.name + ', ' + self.school
+  end
 
 end

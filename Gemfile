@@ -14,6 +14,7 @@ gem 'sinatra',              '~>1.2.6',  :require => 'sinatra/base'
 gem "json_pure",                       :require => 'json/pure'
 
 group :development do
+  gem 'shotgun'
   gem "tux"
   gem 'dm-sweatshop',           '1.1.0'
 end

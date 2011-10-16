@@ -26,7 +26,7 @@ class Controller < Sinatra::Base
   end
 
   configure :production do
-    DataMapper.setup :default, 'postgres://gzuddlvnqd:bWimuwheGFTYmeHUL92Z@ec2-107-20-155-141.compute-1.amazonaws.com/gzuddlvnqd'
+    DataMapper.setup :default, ENV['DATABASE_URL']
   end
 end
 

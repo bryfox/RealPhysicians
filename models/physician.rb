@@ -18,4 +18,12 @@ class Physician
     self.locations.first
   end
 
+  def self.find opts
+    # Hourly fee: filter by maximum
+    max_fee = opts.delete(:hourly_fee)
+    opts.merge!({:hourly_fee.lte => max_fee}) if max_fee
+
+    all(opts)
+  end
+
 end
