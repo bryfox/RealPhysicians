@@ -24,16 +24,18 @@ class Physician
     # Limit to geo, if supplied
     locations = Location.near(geo[:location], geo[:radius]) if geo[:location]
 
+puts "SIZE: #{locations.size}"
+
     if filters
       # Hourly fee: filter by maximum
       max_fee = filters.delete(:hourly_fee)
       filters.merge!({:hourly_fee.lte => max_fee}) if max_fee
     end
 
+puts "FILTERS: #{filters.inspect}"
     if locations
       puts locations.inspect
       locations.collect { |loc| 
-      
         loc.physicians.all(filters) 
       }.flatten.uniq
     else
