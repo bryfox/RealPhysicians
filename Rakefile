@@ -35,8 +35,9 @@ namespace :db do
     }}
 
     Degree.fix {{
-      :degree_date => Time.random.to_datetime,
-      :degree_name => Degree::NAMES.random
+      :degree_date   => Time.random.to_datetime,
+      :degree_name   => Degree::NAMES.random,
+      :degree_school => Degree::SCHOOLS.random
     }}
 
     50.times {Physician.gen}

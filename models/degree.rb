@@ -10,6 +10,6 @@ class Degree
   property :id,     Serial
   property :degree_date, DateTime
   property :degree_name, Flag[*NAMES]
-  property :degree_schools, Flag[*SCHOOLS]
+  property :degree_school, Flag[*SCHOOLS]
 
 end

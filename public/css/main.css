@@ -1,5 +1,7 @@
-body {
-  text-align: left;
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 .physician {
   margin: 1em 0;
@@ -7,10 +9,12 @@ body {
 .physician span {
   display: block;
 }
-.physician .specialties ul,
 .physician .specialties li {
+  font-size: 0.8em;
+  line-height: 1.5;
   list-style: disc;
-  margin-top: 0;
+  list-style-position: inside;
+  margin: 0 0 0 1em;
 }
 .physician .name {
   font-weight: bold;

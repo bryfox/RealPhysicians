@@ -3,15 +3,22 @@
 <form action="/physicians/search" method="GET" class="search">
 
   <fieldset>
-    <input type="text" name="location" placeholder="My Location">
+    <h3>Your Location</h3>
+    <label for="manual_location">Address or ZIP Code</label>
+    <input type="text" name="location" id="manual_location" placeholder="My Location">
+    or <a id="geolocate_link" href="#geolocate">Geolocate Me</a>
   </fieldset>
 
   <fieldset>
-    <input type="text" name="physician[first_name]" placeholder="First Name">
-    <input type="text" name="physician[last_name]" placeholder="Last Name">
+    <h3>Filter by Physician Info</h3>
+    <label for="physician_first_name">First Name</label>
+    <input type="text" name="physician[first_name]" placeholder="First Name" id="physician_first_name">
 
-    <label class="checkbox" for="physician_can_volunteer">Can Volunteer</label>
+    <label for="physician_last_name">Last Name</label>
+    <input type="text" name="physician[last_name]" placeholder="Last Name" id="physician_last_name">
+
     <input class="checkbox" type="checkbox" name="physician[can_volunteer]" id="physician_can_volunteer">
+    <label class="checkbox" for="physician_can_volunteer">Can Volunteer</label>
   </fieldset>
 
   <input type="submit" value="Search">
