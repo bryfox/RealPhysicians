@@ -20,9 +20,9 @@ class Controller < Sinatra::Base
   set :public, File.join(ROOT_DIR, '/public')
 
   configure :development do
-    DataMapper.setup :default, 'postgres://realphysicians:doctordoctor@localhost/realphysicians'
-    DataMapper::Logger.new STDOUT, :debug
     enable :logging
+    DataMapper::Logger.new STDOUT, :debug
+    DataMapper.setup :default, 'postgres://realphysicians:doctordoctor@localhost/realphysicians'
   end
 
   configure :production do
