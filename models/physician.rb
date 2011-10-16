@@ -19,12 +19,8 @@ class Physician
   end
 
   def self.find geo, filters
-    puts "Query: #{geo.inspect} #{filters.inspect}"
-
     # Limit to geo, if supplied
     locations = Location.near(geo[:location], geo[:radius]) if geo[:location]
-
-puts "SIZE: #{locations.size}"
 
     if filters
       # Hourly fee: filter by maximum
@@ -32,12 +28,8 @@ puts "SIZE: #{locations.size}"
       filters.merge!({:hourly_fee.lte => max_fee}) if max_fee
     end
 
-puts "FILTERS: #{filters.inspect}"
     if locations
-      puts locations.inspect
-      locations.collect { |loc| 
-        loc.physicians.all(filters) 
-      }.flatten.uniq
+      locations.collect { |loc|  loc.physicians.all(filters) }.flatten.uniq
     else
       self.all(filters)
     end

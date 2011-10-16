@@ -1,47 +1,51 @@
-<h2>Find a physician near you</h2>
+<div class="row">
+  <h2 class="col_12">Find a physician near you</h2>
 
-<form action="/physicians" method="GET" class="search">
+  <form action="/physicians" method="GET" class="search col_12">
 
-  <fieldset>
-    <h3>Your Location</h3>
-    <label for="manual_location">Address, City, Country</label>
-    <input type="text" name="location[location]" id="manual_location" placeholder="My Location" value="Lagos, Nigeria">
-    <a id="geolocate_link" href="#geolocate">Geolocate Me</a>
+    <fieldset>
+      <h3>Your Location</h3>
+      <label for="manual_location">Address, City, Country</label>
+      <input type="text" name="location[location]" id="manual_location" placeholder="My Location" value="Lagos, Nigeria">
+      <a id="geolocate_link" href="#geolocate" style="display:none">Geolocate Me</a>
 
-    <label for="location_radius" class="select inline">Within</label>
-    <select name="location[radius]">
-      <option value="5" selected="selected">5</option>
-      <option value="10">10</option>
-      <option value="25">25</option>
-      <option value="50">50</option>
-    </select>
-    <span class="inline label">miles</span>
+      <label for="location_radius" class="select inline">Within</label>
+      <select name="location[radius]">
+        <option value="5" selected="selected">5</option>
+        <option value="10">10</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+      </select>
+      <span class="inline label">miles</span>
     
-  </fieldset>
+    </fieldset>
 
-  <fieldset>
-    <h3>Filter by Physician Info</h3>
+    <fieldset>
+      <h3>Filter by Physician Info</h3>
 
-    <!-- <label for="physician_first_name">First Name</label>
-    <input type="text" name="physician[first_name]" placeholder="First Name" id="physician_first_name"> -->
+      <!-- <label for="physician_first_name">First Name</label>
+      <input type="text" name="physician[first_name]" placeholder="First Name" id="physician_first_name"> -->
 
-    <!-- <label for="physician_last_name">Last Name</label>
-    <input type="text" name="physician[last_name]" placeholder="Last Name" id="physician_last_name"> -->
+      <!-- <label for="physician_last_name">Last Name</label>
+      <input type="text" name="physician[last_name]" placeholder="Last Name" id="physician_last_name"> -->
 
-    <label for="physician_hourly_fee">Max. Hourly Fee (USD)</label>
-    <input type="number" name="physician[hourly_fee]" placeholder="50" id="physician_hourly_fee">
+      <label class="number" for="physician_hourly_fee">Max. Hourly Fee (USD)</label>
+      <input type="number" name="physician[hourly_fee]" placeholder="50" id="physician_hourly_fee" class="number">
 
-    <input class="checkbox" type="checkbox" name="physician[can_volunteer]" id="physician_can_volunteer">
-    <label class="checkbox" for="physician_can_volunteer">Willing to Volunteer</label>
+      <br>
 
-    <h4 class="label">Specialties</h4>
-    <% Physician::SPECIALTIES.each do | specialty | %>
-      <input class="specialty checkbox" type="checkbox" name="physician[specialties][]" value="<%= specialty %>">
-      <label class="specialty label"><%= specialty %></label><br>
-    <% end %>
+      <input class="checkbox" type="checkbox" name="physician[can_volunteer]" id="physician_can_volunteer">
+      <label class="checkbox" for="physician_can_volunteer">Willing to Volunteer</label>
 
-  </fieldset>
+      <h4 class="label">Specialties</h4>
+      <% Physician::SPECIALTIES.each do | specialty | %>
+        <input class="specialty checkbox" type="checkbox" name="physician[specialties][]" value="<%= specialty %>">
+        <label class="specialty label"><%= specialty %></label><br>
+      <% end %>
 
-  <input type="submit" value="Search">
-</form>
+    </fieldset>
 
+    <input type="submit" value="Search">
+  </form>
+
+</div>

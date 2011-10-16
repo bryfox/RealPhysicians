@@ -12,8 +12,9 @@
     onSuccess: function (pos) {
       $('#manual_location').val(pos.coords.latitude + ',' + pos.coords.longitude);
     },
-    onFailure: function () {
+    onFailure: function (e) {
       alert('Error geolocating.');
+      console.log(e.message)
     }
   };
 
@@ -22,7 +23,7 @@
       $('#geolocate_link').click(function () {
         geo_position_js.getCurrentPosition(App.Geo.onSuccess, App.Geo.onFailure);
         return false;
-      });
+      }).show();
     }
   };
 

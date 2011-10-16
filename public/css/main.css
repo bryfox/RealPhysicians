@@ -1,5 +1,29 @@
 body {
-  
+  background-color: #efeac9;
+}
+form.search {
+  margin: 1em;
+}
+form.search,
+.results {
+  background-color: #F9FDE3;
+  border: 1px solid #BEBAA0;
+  padding: 0 1em 1em 1em;
+}
+form.search h3 {
+  border-bottom: 1px solid #BEBAA0;
+}
+.results {
+}
+.home h1 img {
+  display: block;
+  margin: 0 auto;
+}
+h2 {
+  font-size: 1.3em;
+}
+h3 {
+  font-size: 1em;
 }
 li {
   list-style: none;
@@ -42,6 +66,13 @@ li {
 .search input.checkbox {
   display: inline;
 }
+.search input.number {
+  width: 4em;
+}
+.search label.number {
+  float: left;
+  margin-right: 0.5em;
+}
 
 .label, label {
   font-weight: normal;
@@ -53,4 +84,8 @@ li {
 
 #geolocate_link {
   display: block;
+}
+
+p + p, p + ul {
+  margin-top: 0;
 }
