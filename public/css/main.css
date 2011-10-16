@@ -50,3 +50,7 @@ li {
 .specialty.label {
   font-size: 0.8em;
 }
+
+#geolocate_link {
+  display: block;
+}

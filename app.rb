@@ -9,7 +9,7 @@ class Controller < Sinatra::Base
   end
 
   get '/physicians' do
-    @physicians = Physician.find clean(params['physician'])
+    @physicians = Physician.find clean(params['location']), clean(params['physician'])
     erb :'physicians/list'
   end
 

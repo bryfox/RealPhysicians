@@ -1,12 +1,22 @@
-<h2>Find a physician</h2>
+<h2>Find a physician near you</h2>
 
 <form action="/physicians" method="GET" class="search">
 
   <fieldset>
     <h3>Your Location</h3>
-    <label for="manual_location">Address or ZIP Code</label>
-    <input type="text" name="location" id="manual_location" placeholder="My Location">
-    or <a id="geolocate_link" href="#geolocate">Geolocate Me</a>
+    <label for="manual_location">Address, City, Country</label>
+    <input type="text" name="location[location]" id="manual_location" placeholder="My Location">
+    <a id="geolocate_link" href="#geolocate">Geolocate Me</a>
+
+    <label for="location_radius" class="select inline">Within</label>
+    <select name="location[radius]">
+      <option value="5" selected="selected">5</option>
+      <option value="10">10</option>
+      <option value="25">25</option>
+      <option value="50">50</option>
+    </select>
+    <span class="inline label">miles</span>
+    
   </fieldset>
 
   <fieldset>
@@ -22,7 +32,7 @@
     <input type="number" name="physician[hourly_fee]" placeholder="50" id="physician_hourly_fee">
 
     <input class="checkbox" type="checkbox" name="physician[can_volunteer]" id="physician_can_volunteer">
-    <label class="checkbox" for="physician_can_volunteer">Can Volunteer</label>
+    <label class="checkbox" for="physician_can_volunteer">Willing to Volunteer</label>
 
     <h4 class="label">Specialties</h4>
     <% Physician::SPECIALTIES.each do | specialty | %>

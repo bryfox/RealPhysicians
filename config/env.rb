@@ -21,7 +21,7 @@ class Controller < Sinatra::Base
 
   configure :development do
     enable :logging
-    DataMapper::Logger.new STDOUT, :debug
+    # DataMapper::Logger.new STDOUT, :debug
     DataMapper.setup :default, 'postgres://realphysicians:doctordoctor@localhost/realphysicians'
   end
 

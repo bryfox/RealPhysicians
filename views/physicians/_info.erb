@@ -12,7 +12,7 @@
 
   <% if physician.primary_location %>
     <span class="address"><%= physician.primary_location.address %></span>
-    <span class="address"><%= physician.primary_location.city %>, <%= physician.primary_location.country %></span>
+    <span class="address"><%= physician.primary_location.address_city %>, Nigeria</span>
   <% end %>
 
   <% if physician.specialties.length %>

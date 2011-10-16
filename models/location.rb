@@ -9,11 +9,6 @@ class Location
 
   property :id,      Serial
   has_geographic_location :address
-  # property :address, Text
-  # property :city,    Text
-  # property :country, Text
-  # property :lat,     String
-  # property :lng,     String
 
   def geolocate
     return if self.address_lat && self.address_lng
@@ -22,6 +17,14 @@ class Location
   
   def geocoder
     Geokit::Geocoders::MultiGeocoder
+  end
+
+  def self.near description, miles_radius = 5
+    if description
+      self.all(:address.near => {:origin => description, :distance => miles_radius.to_i.mi})
+    else
+      self.all
+    end
   end
 
 end

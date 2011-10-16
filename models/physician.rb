@@ -18,12 +18,27 @@ class Physician
     self.locations.first
   end
 
-  def self.find opts
-    # Hourly fee: filter by maximum
-    max_fee = opts.delete(:hourly_fee)
-    opts.merge!({:hourly_fee.lte => max_fee}) if max_fee
-    puts "Query: #{opts.inspect}"
-    all(opts)
+  def self.find geo, filters
+    puts "Query: #{geo.inspect} #{filters.inspect}"
+
+    # Limit to geo, if supplied
+    locations = Location.near(geo[:location], geo[:radius]) if geo[:location]
+
+    if filters
+      # Hourly fee: filter by maximum
+      max_fee = filters.delete(:hourly_fee)
+      filters.merge!({:hourly_fee.lte => max_fee}) if max_fee
+    end
+
+    if locations
+      puts locations.inspect
+      locations.collect { |loc| 
+      
+        loc.physicians.all(filters) 
+      }.flatten.uniq
+    else
+      self.all(filters)
+    end
   end
 
 end

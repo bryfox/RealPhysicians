@@ -1,8 +1,25 @@
+# This is all a mess.
+# dm-geokit makes a lot of assumptions. Doesn't work well outside simple cases.
+# Monkey patches below at least get it working a bit with postgresql
 module DataMapper
   module GeoKit
 
     module InstanceMethods
       module SingletonMethods # :nodoc:
+
+        # dm-geokit breaks all these.
+        def all(query = Undefined)
+          !query || query.equal?(Undefined) ? super(query) : super(prepare_query(query))
+        end
+
+        def first(query = Undefined)
+          query.equal?(Undefined) ? super(query) : super(prepare_query(query))
+        end
+
+        # Required dm-aggregates to work
+        def count(query = Undefined)
+          query.equal?(Undefined) ? super(query) : super(prepare_query(query))
+        end
 
         private
 
@@ -11,6 +28,7 @@ module DataMapper
 
         # Looks in the query for keys that are a DistanceOperator, then extracts the keys/values and turns them into conditions
         def prepare_query(query)
+          return query unless query.is_a? Hash
           new_conds = query[:conditions]
           new_fields = query[:fields]
           query.each_pair do |k,v|
@@ -18,13 +36,13 @@ module DataMapper
             field = k.target
             origin = v[:origin].is_a?(String) ? ::GeoKit::Geocoders::MultiGeocoder.geocode(v[:origin]) : v[:origin]
             distance = v[:distance]
-            new_conds = expand_conditions(new_conds, "#{sphere_distance_sql(field, origin, distance.measurement)}", distance.to_f)
-            new_conds = apply_bounds_conditions(new_conds, field, bounds_from_distance(distance.to_f, origin, distance.measurement))
-            new_fields = expand_fields(new_fields, field, "#{sphere_distance_sql(field, origin, distance.measurement)}")
+            new_conds = expand_conditions(new_conds, "#{sphere_distance_sql(field, origin, distance.measurement)}", distance.to_f) if new_conds
+            new_conds = apply_bounds_conditions(new_conds, field, bounds_from_distance(distance.to_f, origin, distance.measurement)) if new_conds
+            new_fields = expand_fields(new_fields, field, "#{sphere_distance_sql(field, origin, distance.measurement)}") if new_fields
             query.delete(k)
           end
-          query[:conditions] = new_conds
-          query[:fields] = new_fields
+          query[:conditions] = new_conds if new_conds
+          query[:fields] = new_fields if new_fields
           query
         end
 
